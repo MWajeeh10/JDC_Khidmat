@@ -166,30 +166,36 @@ export default function App() {
   const [sequenceWarning2, setSequenceWarning2] = useState('');
   const interestRef = useRef(null);
 
-  // State for all questions (mirroring your friend's structure)
+  // State for all questions 
   const [age, setAge] = useState('');
   const [gender, setGender] = useState('');
   const [computerSkill, setComputerSkill] = useState('');
   const [interest, setInterest] = useState('');
+  //business
   const [bQ1, setBQ1] = useState('');
   const [bQ2, setBQ2] = useState('');
   const [bQ3, setBQ3] = useState('');
   const [bQ4, setBQ4] = useState('');
+  //sales
   const [sQ1, setSQ1] = useState('');
   const [sQ2, setSQ2] = useState('');
   const [sQ3, setSQ3] = useState('');
+  //creative
   const [cQ1, setCQ1] = useState('');
   const [cQ2, setCQ2] = useState('');
   const [cQ3, setCQ3] = useState('');
   const [cQ4, setCQ4] = useState('');
+  //programming languages
   const [pQ1, setPQ1] = useState('');
   const [pQ2, setPQ2] = useState('');
   const [pQ3, setPQ3] = useState('');
   const [pQ4, setPQ4] = useState('');
+  //technical
   const [tQ1, setTQ1] = useState('');
   const [tQ2, setTQ2] = useState('');
   const [tQ3, setTQ3] = useState('');
   const [tQ4, setTQ4] = useState('');
+  //e-commerce
   const [eQ1, setEQ1] = useState('');
   const [eQ2, setEQ2] = useState('');
   const [eQ3, setEQ3] = useState('');
@@ -197,6 +203,7 @@ export default function App() {
   const [eQ4, setEQ4] = useState('');
   const [eQ5, setEQ5] = useState('');
   const [eQ6, setEQ6] = useState('');
+  //data handling
   const [dQ1, setDQ1] = useState('');
   const [dQ2, setDQ2] = useState('');
   const [dQ3, setDQ3] = useState('');
@@ -210,6 +217,7 @@ export default function App() {
     }
   }, [isStarted]);
 
+  //if any of the field is not selected
   const showSequenceWarning = (message) => {
     setSequenceWarning(message);
     setTimeout(() => setSequenceWarning(''), 5000);
