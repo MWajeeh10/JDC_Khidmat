@@ -155,11 +155,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 export default function App() {
-  const [name, setName] = useState('');
+
   const [isStarted, setIsStarted] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [recommendation, setRecommendation] = useState('');
+  const [recommendation1, setRecommendation1] = useState('');
   const [categoryWarning, setCategoryWarning] = useState('');
   const [sequenceWarning, setSequenceWarning] = useState('');
   const [sequenceWarning1, setSequenceWarning1] = useState('');
@@ -239,10 +240,10 @@ export default function App() {
     } else {
       setComputerSkill(val);
       if (val === 'Beginner') {
-        setRecommendation('✅ We recommend you to first take the CIT course!');
+        setRecommendation1('✅ We recommend you to first take the CIT course!');
         setCategoryWarning('');
       } else {
-        setRecommendation('');
+        setRecommendation1('');
       }
     }
   };
@@ -258,8 +259,9 @@ export default function App() {
       setPQ1(''); setPQ2(''); setPQ3(''); setPQ4('');
       setTQ1(''); setTQ2(''); setTQ3(''); setTQ4('');
       setEQ1(''); setEQ2(''); setEQ3(''); setEQ3a(''); setEQ4(''); setEQ5(''); setEQ6('');
-      setDq1(''); setDQ2(''); setDQ3('');
+      setDQ1(''); setDQ2(''); setDQ3('');
       setRecommendation('');
+      setRecommendation1('');
       setCategoryWarning('');
     }
   };
@@ -553,10 +555,11 @@ export default function App() {
   };
 
   const handleSubmit = () => {
-    if (!name || !age || !gender || !computerSkill || !interest) {
-      setRecommendation('❗ Please answer all initial questions.');
+    if (!age || !gender || !computerSkill || !interest) {
+      setCategoryWarning('❗ Please answer all initial questions.');
       return;
     }
+  
     const allAnswers = [age, gender, computerSkill, interest];
     if (interest === 'business') allAnswers.push(bQ1, bQ2, bQ3, bQ4);
     if (interest === 'Sales Department') allAnswers.push(sQ1, sQ2, sQ3);
@@ -575,47 +578,53 @@ export default function App() {
       .then((data) => setRecommendation(`✅ We recommend you to take the ${data.course} course!`))
       .catch((err) => {
         console.error('Error submitting answers:', err);
-        setRecommendation('❗ Error getting recommendation.');
+        setCategoryWarning('❗ Error getting recommendation.');
       });
   };
 
   return (
-    <div className="App">
-      {!isStarted ? (
-        <div className="start-section">
-          <h1>Course Advisor</h1>
+   <div className="App">
+    <header className="app-header">
+  <div className="logo-container">
+    <div className="logo-circle" />
+    <span className="logo-text">JDC Free IT City</span>
+  </div>
+
+  <nav className="nav-menu">
+    <ul className="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#jobs">Jobs</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#result">Find Your Result</a></li>
+    </ul>
+    <button className="register-btn">
+      Register Now →
+    </button>
+  </nav>
+</header>
+
+  <div className="question-section">
+    <h2 className="question-title">Course Advisor</h2> 
+    
+    <div className="question">
+      <p>1) What is your age group?</p>
+      {['14-17', '18-30', '30 above'].map((option) => (
+        <label key={option}>
           <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your name"
-            className="name-input"
-          />
-          <button onClick={() => setIsStarted(true)} disabled={!name}>
-            Start Your Advisor
-          </button>
-        </div>
-      ) : (
-        <div className="question-section">
-          <h2>Welcome, {name}!</h2>
-          <div className="question">
-            <p>1) What is your age group?</p>
-            {['14-17', '18-30', '30 above'].map((option) => (
-              <label key={option}>
-                <input
-                  type="radio"
-                  value={option}
-                  checked={age === option}
-                  onChange={() => {
-                    if (!name) showSequenceWarning('❗ Please enter your name first.');
-                    else setAge(option);
-                  }}
-                />{' '}
-                {option}
-              </label>
-            ))}
-            {sequenceWarning && <div className="warning">{sequenceWarning}</div>}
-          </div>
+            type="radio"
+            value={option}
+            checked={age === option}
+            onChange={() => setAge(option)}  
+          />{' '}
+          {option}
+        </label>
+      ))}
+      
+    </div>
+
+   
 
           <div className="question">
             <p>2) What is your gender?</p>
@@ -650,6 +659,10 @@ export default function App() {
               </label>
             ))}
             {sequenceWarning1 && <div className="warning">{sequenceWarning1}</div>}
+
+            {recommendation1 && (
+    <div className="recommendation">{recommendation1}</div>
+  )}
           </div>
 
           <div className="question" ref={interestRef}>
@@ -1157,15 +1170,72 @@ export default function App() {
                 </div>
               )}
             </>
+            
           )}
 
-          <button onClick={handleSubmit} className="submit-btn">
-            Get Recommendation
-          </button>
           {recommendation && <div className="recommendation">{recommendation}</div>}
           {categoryWarning && <div className="warning">{categoryWarning}</div>}
+          </div>
+         
+          <button onClick={handleSubmit} className="submit-btn">
+            Next
+          </button>
+
+          <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-section">
+          <h3>Quick Link</h3>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#terms">Terms & Condition</a></li>
+            <li><a href="#faq">FAQs & Help</a></li>
+          </ul>
         </div>
-      )}
-    </div>
+        <div className="footer-section">
+          <h3>Contact</h3>
+          <p><span>🏠</span> 5 Star Chowrangi, Block L, North Nazimabad Town, Karachi, Pakistan</p>
+          <p><span>📞</span> 02136641024</p>
+          <p><span>📧</span> info@jdcfreeitcity@gmail.com</p>
+          <div className="social-icons">
+            <a href="#twitter"><i className="fab fa-twitter"></i></a>
+            <a href="#facebook"><i className="fab fa-facebook"></i></a>
+            <a href="#youtube"><i className="fab fa-youtube"></i></a>
+            <a href="#linkedin"><i className="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div className="footer-section">
+          <h3>Gallery</h3>
+          <div className="gallery">
+            <img src="image1.jpg" alt="Gallery 1" />
+            <img src="image2.jpg" alt="Gallery 2" />
+            <img src="image3.jpg" alt="Gallery 3" />
+            <img src="image4.jpg" alt="Gallery 4" />
+            <img src="image5.jpg" alt="Gallery 5" />
+            <img src="image6.jpg" alt="Gallery 6" />
+          </div>
+        </div>
+        <div className="footer-section">
+          <h3>Newsletter</h3>
+          <p>Stay informed! Subscribe to our newsletter for the latest updates.</p>
+          <input type="email" placeholder="Your email" />
+          <button>SignUp</button>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <p>© JDC FREE IT CITY, All Right Reserved. Designed By SOFTOLOGICS</p>
+        <div className="footer-links">
+          <a href="#home">Home</a>
+          <a href="#cookies">Cookies</a>
+          <a href="#help">Help</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+    </footer>
+         
+        </div>
+
   );
 }
+
