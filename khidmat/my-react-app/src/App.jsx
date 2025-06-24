@@ -275,8 +275,10 @@ export default function App() {
 
   const handleBQ2 = (val) => {
     setBQ2(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take Business Development course!');
+      setCategoryWarning('');
     } else {
       setRecommendation('');
     }
@@ -286,8 +288,10 @@ export default function App() {
 
   const handleBQ3 = (val) => {
     setBQ3(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take Digital Marketing course!');
+      setCategoryWarning('');
     } else {
       setRecommendation('');
     }
@@ -297,8 +301,10 @@ export default function App() {
 
   const handleBQ4 = (val) => {
     setBQ4(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take Entrepreneurial Leadership course!');
+      setCategoryWarning('');
     } else {
       setRecommendation('');
       setCategoryWarning('❗ Kindly choose another category from Q4).');
@@ -308,6 +314,7 @@ export default function App() {
 
   const handleSQ1 = (val) => {
     setSQ1(val);
+    setCategoryWarning('');
     if (val === 'Beginner') {
       setRecommendation('✅ We recommend you to take the English Language course!');
     } else {
@@ -326,6 +333,7 @@ export default function App() {
 
   const handleSQ3 = (val) => {
     setSQ3(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the Sales Development course!');
     } else {
@@ -344,6 +352,7 @@ export default function App() {
 
   const handleCQ2 = (val) => {
     setCQ2(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the Photo/Video Editing course!');
     } else {
@@ -362,6 +371,7 @@ export default function App() {
 
   const handleCQ4 = (val) => {
     setCQ4(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the Graphics Designing course!');
     } else {
@@ -380,6 +390,7 @@ export default function App() {
 
   const handlePQ2 = (val) => {
     setPQ2(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the Python Programming course!');
     } else {
@@ -391,6 +402,7 @@ export default function App() {
 
   const handlePQ3 = (val) => {
     setPQ3(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the C# sharp Programming course!');
     } else {
@@ -402,6 +414,7 @@ export default function App() {
 
   const handlePQ4 = (val) => {
     setPQ4(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the Mastering C++ course!');
     } else {
@@ -420,6 +433,7 @@ export default function App() {
 
   const handleTQ2 = (val) => {
     setTQ2(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the Web Development course!');
     } else {
@@ -431,6 +445,7 @@ export default function App() {
 
   const handleTQ3 = (val) => {
     setTQ3(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the IT Essentials course!');
     } else {
@@ -442,6 +457,7 @@ export default function App() {
 
   const handleTQ4 = (val) => {
     setTQ4(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the CCNA course!');
     } else {
@@ -464,6 +480,7 @@ export default function App() {
 
   const handleEQ2 = (val) => {
     setEQ2(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the Shopify course!');
     } else {
@@ -482,6 +499,7 @@ export default function App() {
 
   const handleEQ3a = (val) => {
     setEQ3a(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the ETSY course!');
     } else {
@@ -494,6 +512,7 @@ export default function App() {
 
   const handleEQ4 = (val) => {
     setEQ4(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the Walmart course!');
     } else {
@@ -505,6 +524,7 @@ export default function App() {
 
   const handleEQ5 = (val) => {
     setEQ5(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the Amazon course!');
     } else {
@@ -516,6 +536,7 @@ export default function App() {
 
   const handleEQ6 = (val) => {
     setEQ6(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the e-Bay course!');
     } else {
@@ -534,6 +555,7 @@ export default function App() {
 
   const handleDQ2 = (val) => {
     setDQ2(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the Power BI course!');
     } else {
@@ -545,6 +567,7 @@ export default function App() {
 
   const handleDQ3 = (val) => {
     setDQ3(val);
+    setCategoryWarning('');
     if (val === 'Yes') {
       setRecommendation('✅ We recommend you to take the Data Analysis course!');
     } else {
