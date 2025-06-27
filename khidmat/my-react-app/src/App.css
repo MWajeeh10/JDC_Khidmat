@@ -312,3 +312,33 @@ button:hover {
 .footer-links a:hover {
   text-decoration: underline;
 }
+
+.question-section.ltr {
+  text-align: left;
+  direction: ltr;
+}
+
+.question-section.rtl {
+  text-align: right;
+  direction: rtl;
+}
+
+.question.en {
+  text-align: left;
+  direction: ltr;
+  border-left: 4px solid #4CAF50;
+  padding-left: 15px;
+  padding-right: 0;
+}
+
+.question.ur {
+  text-align: right;
+  direction: rtl;
+  border-right: 4px solid #4CAF50;
+  border-left: none;
+  padding-right: 15px;
+  padding-left: 0;
+}
+
+
+
