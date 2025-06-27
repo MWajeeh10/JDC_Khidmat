@@ -1,164 +1,13 @@
-// /* App.jsx */
-// import { useState, useEffect } from 'react';
-// import './App.css';
-
-// const questions = [
-//   {
-//     id: 1,
-//     question: 'What is your age group?',
-//     options: ['14-18', '18-25', '25-35', '35+'],
-//   },
-//   {
-//     id: 2,
-//     question: 'What is your main goal?',
-//     options: [
-//       'Learn a skill for freelancing',
-//       'Start an online business/store',
-//       'Get a job in tech or IT',
-//       'Improve English or communication',
-//       'Learn for fun or hobby',
-//       'Grow in my current job',
-//     ],
-//   },
-//   {
-//     id: 3,
-//     question: 'What is your experience with computers?',
-//     options: ['Complete beginner', 'I know the basics', 'I can code / I am confident'],
-//   },
-// ];
-
-// function App() {
-//   const [step, setStep] = useState(0); // Start at 0, increment to 1 for first question
-//   const [answers, setAnswers] = useState({});
-//   const [isStarted, setIsStarted] = useState(false);
-//   const [isLoaded, setIsLoaded] = useState(false);
-
-//   const handleAnswer = (option) => {
-//     const questionId = questions[step - 1].id; // Use step - 1 since step 1 is the first question
-//     setAnswers({ ...answers, [questionId]: option });
-//     setStep(step + 1); // Always increment step, including past the last question
-//   };
-
-//   const progress = isStarted ? ((step - 1) / (questions.length + 1)) * 100 : 0; // Adjust for start and result screens
-
-//   const getCourseRecommendation = () => {
-//     const goal = answers[2];
-//     const experience = answers[3];
-
-//     if (goal === 'Learn a skill for freelancing') return 'Freelancing (Digital Marketing)';
-//     if (goal === 'Start an online business/store') return 'Shopify';
-//     if (goal === 'Get a job in tech or IT') return experience === 'Complete beginner' ? 'CIT' : 'Web Development';
-//     if (goal === 'Improve English or communication') return 'English Language';
-//     return 'Web & Graphics';
-//   };
-
-//   useEffect(() => {
-//     setIsLoaded(true); // Trigger animation on mount
-//     // Placeholder for future API call to fetch questions from MySQL
-//     // Example: fetch('/api/questions').then(res => setQuestions(res.data));
-//   }, []);
-
-//   return (
-//     <div className="app-container">
-//       <div className="particle-background"></div>
-//       <header className="app-header">
-//         <div className="logo">
-//           <img src="jdc-logo-placeholder.png" alt="JDC IT CITY Logo" className="logo-img" />
-//         </div>
-//         <nav className="nav-menu">
-//           <ul>
-//             <li><a href="#home">Home</a></li>
-//             <li><a href="#courses">Courses</a></li>
-//             <li><a href="#about">About</a></li>
-//             <li><a href="#contact">Contact</a></li>
-//           </ul>
-//           <div className="hamburger">☰</div>
-//         </nav>
-//       </header>
-//       <div className="main-content">
-//         <aside className="sidebar">
-//           <div className="progress-circle" style={{ '--progress': `${progress}%` }}>
-//             {Math.round(progress)}%
-//           </div>
-//           {isStarted && <p>Step {step} of {questions.length + 1}</p>}
-//         </aside>
-//         <main className={`content-wrapper ${isLoaded ? 'loaded' : ''}`}>
-//           {!isStarted ? (
-//             <div className={`start-screen ${isLoaded ? 'fade-in' : ''}`}>
-//               <h1>Welcome to JDC IT City</h1>
-//               <p>Discover the perfect course for your future!</p>
-//               <button className="start-btn" onClick={() => { setIsStarted(true); setStep(1); }}>Start Your Advisor</button>
-//             </div>
-//           ) : step <= questions.length ? (
-//             <div className={`card ${isLoaded ? 'fade-in' : ''}`}>
-//               <h2>{questions[step - 1].question}</h2>
-//               <div className="options-grid">
-//                 {questions[step - 1].options.map((opt, index) => (
-//                   <button
-//                     key={index}
-//                     onClick={() => handleAnswer(opt)}
-//                     className={`option-btn ${isLoaded ? 'slide-in' : ''}`}
-//                     style={{ animationDelay: `${index * 0.1}s` }}
-//                   >
-//                     {opt}
-//                   </button>
-//                 ))}
-//               </div>
-//             </div>
-//           ) : (
-//             <div className={`card ${isLoaded ? 'fade-in' : ''}`}>
-//               <div className="result">
-//                 <h2>🎉 Your Perfect Course Awaits!</h2>
-//                 <p>Based on your answers, we recommend:</p>
-//                 <h3>{getCourseRecommendation()}</h3>
-//                 <button className="enroll-btn">Enroll Now at JDC IT City</button>
-//               </div>
-//             </div>
-//           )}
-//         </main>
-//       </div>
-//       <footer className="app-footer">
-//         <div className="footer-section">
-//           <h4>About Us</h4>
-//           <p>Empowering futures with top-tier IT education at JDC IT City.</p>
-//         </div>
-//         <div className="footer-section">
-//           <h4>Quick Links</h4>
-//           <ul>
-//             <li><a href="#courses">Courses</a></li>
-//             <li><a href="#admissions">Admissions</a></li>
-//             <li><a href="#blog">Blog</a></li>
-//           </ul>
-//         </div>
-//         <div className="footer-section">
-//           <h4>Contact</h4>
-//           <p>Email: info@jdcitcity.com</p>
-//           <p>Phone: +92-123-4567890</p>
-//         </div>
-//         <div className="footer-section">
-//           <h4>Follow Us</h4>
-//           <div className="social-links">
-//             <a href="#facebook">Facebook</a>
-//             <a href="#twitter">Twitter</a>
-//             <a href="#linkedin">LinkedIn</a>
-//           </div>
-//         </div>
-//         <p className="footer-copyright">© {new Date().getFullYear()} JDC IT City. All rights reserved.</p>
-//       </footer>
-//     </div>
-//   );
-// }
-
-// export default App;
 
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 export default function App() {
+  
 
-  const [isStarted, setIsStarted] = useState(false);
+  
   const [questions, setQuestions] = useState([]);
-  const [answers, setAnswers] = useState([]);
+ 
   const [recommendation, setRecommendation] = useState('');
   const [recommendation1, setRecommendation1] = useState('');
   const [categoryWarning, setCategoryWarning] = useState('');
@@ -166,6 +15,9 @@ export default function App() {
   const [sequenceWarning1, setSequenceWarning1] = useState('');
   const [sequenceWarning2, setSequenceWarning2] = useState('');
   const interestRef = useRef(null);
+  const [language, setLanguage] = useState('en'); // 'en' or 'ur'
+  const t = (en, ur) => (language === 'en' ? en : ur); // translator function
+
 
   // State for all questions 
   const [age, setAge] = useState('');
@@ -209,14 +61,14 @@ export default function App() {
   const [dQ2, setDQ2] = useState('');
   const [dQ3, setDQ3] = useState('');
 
-  useEffect(() => {
-    if (isStarted) {
-      fetch('http://localhost:5000/api/questions')
-        .then((res) => res.json())
-        .then((data) => setQuestions(data))
-        .catch((err) => console.error('Error fetching questions:', err));
-    }
-  }, [isStarted]);
+  // useEffect(() => {
+  //   if (isStarted) {
+  //     fetch('http://localhost:5000/api/questions')
+  //       .then((res) => res.json())
+  //       .then((data) => setQuestions(data))
+  //       .catch((err) => console.error('Error fetching questions:', err));
+  //   }
+  // }, [isStarted]);
 
   //if any of the field is not selected
   const showSequenceWarning = (message) => {
@@ -236,11 +88,15 @@ export default function App() {
 
   const handleComputerSkill = (val) => {
     if (!gender) {
-      showSequenceWarning1('❗ Please answer Question 2 (Gender) first.');
+      showSequenceWarning1(t(
+        '❗ Please answer Question 2 (Gender) first.',
+        '❗ براہ کرم پہلے سوال نمبر 2 (صنف) کا جواب دیں۔'
+      ));
     } else {
       setComputerSkill(val);
       if (val === 'Beginner') {
-        setRecommendation1('✅ We recommend you to first take the CIT course!');
+        setRecommendation1(t('✅ We recommend you to first take the CIT course!', 
+          '✅ ہم آپ کو پہلے CIT کورس کرنے کی تجویز دیتے ہیں!'));
         setCategoryWarning('');
       } else {
         setRecommendation1('');
@@ -250,7 +106,10 @@ export default function App() {
 
   const handleInterestChange = (val) => {
     if (!computerSkill) {
-      showSequenceWarning2('❗ Please answer Question 3 (Skills) first.');
+      showSequenceWarning2( t(
+        '❗ Please answer Question 3 (Skills) first.',
+        '❗ براہ کرم پہلے سوال نمبر 3 (کمپیوٹر مہارت) کا جواب دیں۔'
+      ));
     } else {
       setInterest(val);
       setBQ1(''); setBQ2(''); setBQ3(''); setBQ4('');
@@ -277,7 +136,8 @@ export default function App() {
     setBQ2(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take Business Development course!');
+      setRecommendation(t('✅ We recommend you to take Business Development course!', 
+        '✅ ہم آپ کو بزنس ڈیولپمنٹ کورس لینے کی تجویز دیتے ہیں!'));
       setCategoryWarning('');
     } else {
       setRecommendation('');
@@ -290,7 +150,10 @@ export default function App() {
     setBQ3(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take Digital Marketing course!');
+      setRecommendation( t(
+        '✅ We recommend you to take Digital Marketing course!',
+        '✅ ہم آپ کو ڈیجیٹل مارکیٹنگ کورس کرنے کی تجویز دیتے ہیں!'
+      ));
       setCategoryWarning('');
     } else {
       setRecommendation('');
@@ -303,11 +166,17 @@ export default function App() {
     setBQ4(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take Entrepreneurial Leadership course!');
+      setRecommendation(t(
+        '✅ We recommend you to take Entrepreneurial Leadership course!',
+        '✅ ہم آپ کو انٹرپرینیور لیڈرشپ کورس کرنے کی تجویز دیتے ہیں!'
+      ));
       setCategoryWarning('');
     } else {
       setRecommendation('');
-      setCategoryWarning('❗ Kindly choose another category from Q4).');
+      setCategoryWarning( t(
+        '❗ Kindly choose another category from Q4).',
+        '❗ براہ کرم سوال نمبر 4 سے کوئی اور زمرہ منتخب کریں۔'
+      ));
       interestRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -316,7 +185,10 @@ export default function App() {
     setSQ1(val);
     setCategoryWarning('');
     if (val === 'Beginner') {
-      setRecommendation('✅ We recommend you to take the English Language course!');
+      setRecommendation(t(
+        '✅ We recommend you to take the English Language course!',
+        '✅ ہم آپ کو انگلش لینگویج کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
     }
@@ -335,10 +207,17 @@ export default function App() {
     setSQ3(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the Sales Development course!');
+      setRecommendation(  t(
+        '✅ We recommend you to take the Sales Development course!',
+        '✅ ہم آپ کو سیلز ڈیولپمنٹ کورس کرنے کی تجویز دیتے ہیں!'
+      )
+    );
     } else {
       setRecommendation('');
-      setCategoryWarning('❗ Kindly choose another category from Q4).');
+      setCategoryWarning(  t(
+        '❗ Kindly choose another category from Q4).',
+        '❗ براہ کرم سوال نمبر 4 سے کوئی اور زمرہ منتخب کریں۔'
+      ));
       interestRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -354,7 +233,10 @@ export default function App() {
     setCQ2(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the Photo/Video Editing course!');
+      setRecommendation(  t(
+        '✅ We recommend you to take the Photo/Video Editing course!',
+        '✅ ہم آپ کو فوٹو/ویڈیو ایڈیٹنگ کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
     }
@@ -373,10 +255,16 @@ export default function App() {
     setCQ4(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the Graphics Designing course!');
+      setRecommendation(  t(
+        '✅ We recommend you to take the Graphics Designing course!',
+        '✅ ہم آپ کو گرافکس ڈیزائننگ کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
-      setCategoryWarning('❗ Kindly choose another category from Q4).');
+      setCategoryWarning(  t(
+        '❗ Kindly choose another category from Q4).',
+        '❗ براہ کرم سوال نمبر 4 سے کوئی اور زمرہ منتخب کریں۔'
+      ));
       interestRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -392,7 +280,11 @@ export default function App() {
     setPQ2(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the Python Programming course!');
+      setRecommendation(  t(
+        '✅ We recommend you to take the Python Programming course!',
+        '✅ ہم آپ کو Python پروگرامنگ کورس کرنے کی تجویز دیتے ہیں!'
+        
+      ));
     } else {
       setRecommendation('');
     }
@@ -404,7 +296,10 @@ export default function App() {
     setPQ3(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the C# sharp Programming course!');
+      setRecommendation(  t(
+        '✅ We recommend you to take the C# sharp Programming course!',
+        '✅ ہم آپ کو سی شارپ پروگرامنگ کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
     }
@@ -416,10 +311,14 @@ export default function App() {
     setPQ4(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the Mastering C++ course!');
+      setRecommendation(t('✅ We recommend you to take the Mastering C++ course!', 
+        '✅ ہم آپ کو ++C ماسٹرنگ کورس کرنے کی تجویز دیتے ہیں!'));
     } else {
       setRecommendation('');
-      setCategoryWarning('❗ Kindly choose another category from Q4).');
+      setCategoryWarning(  t(
+        '❗ Kindly choose another category from Q4).',
+        '❗ براہ کرم سوال نمبر 4 سے کوئی اور زمرہ منتخب کریں۔'
+      ));
       interestRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -435,7 +334,10 @@ export default function App() {
     setTQ2(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the Web Development course!');
+      setRecommendation(   t(
+        '✅ We recommend you to take the Web Development course!',
+        '✅ ہم آپ کو ویب ڈیولپمنٹ کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
     }
@@ -447,7 +349,10 @@ export default function App() {
     setTQ3(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the IT Essentials course!');
+      setRecommendation(  t(
+        '✅ We recommend you to take the IT Essentials course!',
+        '✅ ہم آپ کو آئی ٹی ایسینشلز کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
     }
@@ -459,10 +364,16 @@ export default function App() {
     setTQ4(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the CCNA course!');
+      setRecommendation( t(
+        '✅ We recommend you to take the CCNA course!',
+        '✅ ہم آپ کو سی سی این اے کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
-      setCategoryWarning('❗ Kindly choose another category from Q4).');
+      setCategoryWarning(  t(
+        '❗ Kindly choose another category from Q4).',
+        '❗ براہ کرم سوال نمبر 4 سے کوئی اور زمرہ منتخب کریں۔'
+      ));
       interestRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -471,7 +382,10 @@ export default function App() {
     setEQ1(val);
     setEQ2(''); setEQ3(''); setEQ3a(''); setEQ4(''); setEQ5(''); setEQ6('');
     if (val === 'No') {
-      setRecommendation('✅ We recommend you to take the Daraz course!');
+      setRecommendation( t(
+        '✅ We recommend you to take the Daraz course!',
+        '✅ ہم آپ کو دراز کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
     }
@@ -482,7 +396,10 @@ export default function App() {
     setEQ2(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the Shopify course!');
+      setRecommendation(t(
+        '✅ We recommend you to take the Shopify course!',
+        '✅ ہم آپ کو شاپیفائی کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
     }
@@ -501,10 +418,14 @@ export default function App() {
     setEQ3a(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the ETSY course!');
+      setRecommendation(t('✅ We recommend you to take the ETSY course!', 
+        '✅ ہم آپ کو ETSY کورس کرنے کی تجویز دیتے ہیں!'));
     } else {
       setRecommendation('');
-      setCategoryWarning('❗ Kindly choose another category from Q4).');
+      setCategoryWarning( t(
+        '❗ Kindly choose another category from Q4).',
+        '❗ براہ کرم سوال نمبر 4 سے کوئی اور زمرہ منتخب کریں۔'
+      ));
       interestRef.current.scrollIntoView({ behavior: 'smooth' });
     }
     setEQ4(''); setEQ5(''); setEQ6('');
@@ -514,7 +435,10 @@ export default function App() {
     setEQ4(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the Walmart course!');
+      setRecommendation( t(
+        '✅ We recommend you to take the Walmart course!',
+        '✅ ہم آپ کو والمارٹ کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
     }
@@ -526,7 +450,10 @@ export default function App() {
     setEQ5(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the Amazon course!');
+      setRecommendation( t(
+        '✅ We recommend you to take the Amazon course!',
+        '✅ ہم آپ کو ایمیزون کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
     }
@@ -538,10 +465,16 @@ export default function App() {
     setEQ6(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the e-Bay course!');
+      setRecommendation( t(
+        '✅ We recommend you to take the e-Bay course!',
+        '✅ ہم آپ کو ای بے کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
-      setCategoryWarning('❗ Kindly choose another category from Q4).');
+      setCategoryWarning(t(
+        '❗ Kindly choose another category from Q4).',
+        '❗ براہ کرم سوال نمبر 4 سے کوئی اور زمرہ منتخب کریں۔'
+      ));
       interestRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -557,7 +490,10 @@ export default function App() {
     setDQ2(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the Power BI course!');
+      setRecommendation(t(
+        '✅ We recommend you to take the Power BI course!',
+        '✅ ہم آپ کو پاور بی آئی کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
     }
@@ -569,44 +505,62 @@ export default function App() {
     setDQ3(val);
     setCategoryWarning('');
     if (val === 'Yes') {
-      setRecommendation('✅ We recommend you to take the Data Analysis course!');
+      setRecommendation(t(
+        '✅ We recommend you to take the Data Analysis course!',
+        '✅ ہم آپ کو ڈیٹا اینالیسس کورس کرنے کی تجویز دیتے ہیں!'
+      ));
     } else {
       setRecommendation('');
-      setCategoryWarning('❗ Kindly choose another category from Q4).');
+      setCategoryWarning(t(
+        '❗ Kindly choose another category from Q4).',
+        '❗ براہ کرم سوال نمبر 4 سے کوئی اور زمرہ منتخب کریں۔'
+      ));
       interestRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const handleSubmit = () => {
-    if (!age || !gender || !computerSkill || !interest) {
-      setCategoryWarning('❗ Please answer all initial questions.');
-      return;
-    }
+  // const handleSubmit = () => {
+  //   if (!age || !gender || !computerSkill || !interest) {
+  //     setCategoryWarning(t(
+  //       '❗ Please answer all initial questions.',
+  //       '❗ براہ کرم تمام ابتدائی سوالات کے جوابات دیں۔'
+  //     ));
+  //     return;
+  //   }
   
-    const allAnswers = [age, gender, computerSkill, interest];
-    if (interest === 'business') allAnswers.push(bQ1, bQ2, bQ3, bQ4);
-    if (interest === 'Sales Department') allAnswers.push(sQ1, sQ2, sQ3);
-    if (interest === 'creative') allAnswers.push(cQ1, cQ2, cQ3, cQ4);
-    if (interest === 'Programming Languages') allAnswers.push(pQ1, pQ2, pQ3, pQ4);
-    if (interest === 'Technical') allAnswers.push(tQ1, tQ2, tQ3, tQ4);
-    if (interest === 'E-commerce') allAnswers.push(eQ1, eQ2, eQ3, eQ3a, eQ4, eQ5, eQ6);
-    if (interest === 'Data Handling') allAnswers.push(dQ1, dQ2, dQ3);
+  //   const allAnswers = [age, gender, computerSkill, interest];
+  //   if (interest === 'business') allAnswers.push(bQ1, bQ2, bQ3, bQ4);
+  //   if (interest === 'Sales Department') allAnswers.push(sQ1, sQ2, sQ3);
+  //   if (interest === 'creative') allAnswers.push(cQ1, cQ2, cQ3, cQ4);
+  //   if (interest === 'Programming Languages') allAnswers.push(pQ1, pQ2, pQ3, pQ4);
+  //   if (interest === 'Technical') allAnswers.push(tQ1, tQ2, tQ3, tQ4);
+  //   if (interest === 'E-commerce') allAnswers.push(eQ1, eQ2, eQ3, eQ3a, eQ4, eQ5, eQ6);
+  //   if (interest === 'Data Handling') allAnswers.push(dQ1, dQ2, dQ3);
 
-    fetch('http://localhost:5000/api/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userName: name, answers: allAnswers }),
-    })
-      .then((res) => res.json())
-      .then((data) => setRecommendation(`✅ We recommend you to take the ${data.course} course!`))
-      .catch((err) => {
-        console.error('Error submitting answers:', err);
-        setCategoryWarning('❗ Error getting recommendation.');
-      });
-  };
+  //   fetch('http://localhost:5000/api/submit', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ userName: name, answers: allAnswers }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setRecommendation( t(
+  //       `✅ We recommend you to take the ${data.course} course!`,
+  //       `✅ ہم آپ کو ${data.course} کورس کرنے کی تجویز دیتے ہیں!`
+  //     )))
+  //     .catch((err) => {
+  //       console.error('Error submitting answers:', err);
+  //       setCategoryWarning(t(
+  //         t(
+  //           '❗ Error getting recommendation.',
+  //           '❗ تجویز حاصل کرنے میں خرابی پیش آ گئی ہے۔'
+  //         )
+        
+  //       ));
+  //     });
+  // };
 
   return (
-   <div className="App">
+    <div className={`App ${language}`}>
     <header className="app-header">
   <div className="logo-container">
     <div className="logo-circle" />
@@ -625,14 +579,22 @@ export default function App() {
     <button className="register-btn">
       Register Now →
     </button>
+    <button className="register-btn" onClick={() => setLanguage(language === 'en' ? 'ur' : 'en')}>
+      {language === 'en' ? 'اردو میں تبدیل کریں' : 'Switch to English'}
+    </button>
   </nav>
 </header>
 
-  <div className="question-section">
+  {/* <div className="question-section"> */}
+  <div
+  className={`question-section ${language === 'ur' ? 'rtl' : 'ltr'}`}
+  dir={language === 'ur' ? 'rtl' : 'ltr'}
+>
     <h2 className="question-title">Course Advisor</h2> 
     
-    <div className="question">
-      <p>1) What is your age group?</p>
+    {/* <div className="question"> */}
+    <div className={`question ${language}`}>
+      <p>{t('1) What is your age group?', '1) آپ کی عمر کی حد کیا ہے؟ ')}</p>
       {['14-17', '18-30', '30 above'].map((option) => (
         <label key={option}>
           <input
@@ -641,7 +603,7 @@ export default function App() {
             checked={age === option}
             onChange={() => setAge(option)}  
           />{' '}
-          {option}
+          {t(option, option === '14-17' ? '14 تا 17' : option === '18-30' ? '18 تا 30' : '30 سے اوپر')}
         </label>
       ))}
       
@@ -649,8 +611,8 @@ export default function App() {
 
    
 
-          <div className="question">
-            <p>2) What is your gender?</p>
+    <div className={`question ${language}`}>
+          <p>{t("2) What is your gender?", "2) آپ کی جنس کیا ہے؟")}</p>
             {['Male', 'Female', 'Prefer not to say'].map((option) => (
               <label key={option}>
                 <input
@@ -658,18 +620,21 @@ export default function App() {
                   value={option}
                   checked={gender === option}
                   onChange={() => {
-                    if (!age) showSequenceWarning('❗ Please answer Question 1 (Age) first.');
+                    if (!age) showSequenceWarning(t(
+                      '❗ Please answer Question 1 (Age) first.',
+                      '❗ براہ کرم پہلے سوال نمبر 1 (عمر) کا جواب دیں۔'
+                    ));
                     else setGender(option);
                   }}
                 />{' '}
-                {option}
+                 {t(option, option === 'Male' ? 'مرد' : option === 'Female' ? 'عورت' : 'بتانا نہیں چاہتے')}
               </label>
             ))}
             {sequenceWarning && <div className="warning">{sequenceWarning}</div>}
           </div>
 
-          <div className="question">
-            <p>3) How would you rate your computer skills?</p>
+          <div className={`question ${language}`}>
+          <p>{t("3) How would you rate your computer skills?", "3) آپ اپنی کمپیوٹر کی مہارت کو کس طرح درجہ دیں گے؟")}</p>
             {['Beginner', 'Average', 'Excellent'].map((option) => (
               <label key={option}>
                 <input
@@ -678,7 +643,7 @@ export default function App() {
                   checked={computerSkill === option}
                   onChange={() => handleComputerSkill(option)}
                 />{' '}
-                {option}
+                 {t(option, option === 'Beginner' ? 'ابتدائی' : option === 'Average' ? 'درمیانہ' : 'اعلیٰ')}
               </label>
             ))}
             {sequenceWarning1 && <div className="warning">{sequenceWarning1}</div>}
@@ -688,8 +653,9 @@ export default function App() {
   )}
           </div>
 
-          <div className="question" ref={interestRef}>
-            <p>4) What kind of work do you want to learn?</p>
+          <div className={`question ${language}`} ref={interestRef}>
+
+          <p>{t("4) What kind of work do you want to learn?", "4) آپ کس قسم کا کام سیکھنا چاہتے ہیں؟")}</p>
             {['business', 'creative', 'Sales Department', 'E-commerce', 'Data Handling', 'Programming Languages', 'Technical'].map((option) => (
               <label key={option}>
                 <input
@@ -698,13 +664,23 @@ export default function App() {
                   checked={interest === option}
                   onChange={() => handleInterestChange(option)}
                 />{' '}
-                {option === 'business' ? 'Business (startup, management)' :
-                 option === 'creative' ? 'Creative (designing, editing)' :
-                 option === 'Sales Department' ? 'Sales Department (communication)' :
-                 option === 'E-commerce' ? 'E-commerce (online stores, selling items)' :
-                 option === 'Data Handling' ? 'Data Handling (analysis, visualization)' :
-                 option === 'Programming Languages' ? 'Programming Languages (coding)' :
-                 'Technical (networking, OS)'}
+                  {t(
+      option === 'business' ? 'Business (startup, management)' :
+      option === 'creative' ? 'Creative (designing, editing)' :
+      option === 'Sales Department' ? 'Sales Department (communication)' :
+      option === 'E-commerce' ? 'E-commerce (online stores, selling items)' :
+      option === 'Data Handling' ? 'Data Handling (analysis, visualization)' :
+      option === 'Programming Languages' ? 'Programming Languages (coding)' :
+      'Technical (networking, OS)',
+
+      option === 'business' ? 'کاروبار (اسٹارٹ اپ، مینجمنٹ)' :
+      option === 'creative' ? 'تخلیقی (ڈیزائننگ، ایڈیٹنگ)' :
+      option === 'Sales Department' ? 'سیلز ڈیپارٹمنٹ (رابطہ کاری)' :
+      option === 'E-commerce' ? 'ای کامرس (آن لائن اسٹور، فروخت)' :
+      option === 'Data Handling' ? 'ڈیٹا ہینڈلنگ (تجزیہ، ویژولائزیشن)' :
+      option === 'Programming Languages' ? 'پروگرامنگ زبانیں (کوڈنگ)' :
+      'تکنیکی (نیٹ ورکنگ، او ایس)'
+    )}
               </label>
             ))}
             {sequenceWarning2 && <div className="warning">{sequenceWarning2}</div>}
@@ -712,8 +688,8 @@ export default function App() {
 
           {interest === 'business' && (
             <>
-              <div className="question">
-                <p>5) Interested in managing clients and making sales?</p>
+            <div className={`question ${language}`}>
+            <p>{t("5) Interested in managing clients and making sales?", "5) کیا آپ کلائنٹس کو سنبھالنے اور سیلز میں دلچسپی رکھتے ہیں؟")}</p>
                 {['Yes', 'No'].map((option) => (
                   <label key={option}>
                     <input
@@ -722,13 +698,13 @@ export default function App() {
                       checked={bQ1 === option}
                       onChange={() => handleBQ1(option)}
                     />{' '}
-                    {option}
+                     {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
                   </label>
                 ))}
               </div>
               {bQ1 === 'Yes' && (
-                <div className="question">
-                  <p>6) Want to explore how AI grows a business online?</p>
+                <div className={`question ${language}`}>
+                 <p>{t("6) Want to explore how AI grows a business online?", "6) کیا آپ جاننا چاہتے ہیں کہ AI آن لائن کاروبار کو کیسے بڑھاتا ہے؟")}</p>
                   {['Yes', 'No'].map((option) => (
                     <label key={option}>
                       <input
@@ -737,14 +713,14 @@ export default function App() {
                         checked={bQ2 === option}
                         onChange={() => handleBQ2(option)}
                       />{' '}
-                      {option}
+                      {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
                     </label>
                   ))}
                 </div>
               )}
               {(bQ1 === 'No' || (bQ1 === 'Yes' && bQ2 === 'No')) && (
-                <div className="question">
-                  <p>7) Do you want to earn money online by freelancing or marketing?</p>
+                 <div className={`question ${language}`}>
+                  <p>{t("7) Do you want to earn money online by freelancing or marketing?", "7) کیا آپ فری لانسنگ یا مارکیٹنگ کے ذریعے آن لائن پیسے کمانا چاہتے ہیں؟")}</p>
                   {['Yes', 'No'].map((option) => (
                     <label key={option}>
                       <input
@@ -753,14 +729,14 @@ export default function App() {
                         checked={bQ3 === option}
                         onChange={() => handleBQ3(option)}
                       />{' '}
-                      {option}
+                      {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
                     </label>
                   ))}
                 </div>
               )}
               {bQ3 === 'No' && (
-                <div className="question">
-                  <p>8) Are you interested in starting and managing your own business, brand or company?</p>
+                 <div className={`question ${language}`}>
+                  <p>{t("8) Are you interested in starting and managing your own business, brand or company?", "8) کیا آپ اپنا کاروبار، برانڈ یا کمپنی شروع کرنے اور چلانے میں دلچسپی رکھتے ہیں؟")}</p>
                   {['Yes', 'No'].map((option) => (
                     <label key={option}>
                       <input
@@ -769,7 +745,7 @@ export default function App() {
                         checked={bQ4 === option}
                         onChange={() => handleBQ4(option)}
                       />{' '}
-                      {option}
+                      {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
                     </label>
                   ))}
                 </div>
@@ -779,8 +755,8 @@ export default function App() {
 
           {interest === 'Sales Department' && (
             <>
-              <div className="question">
-                <p>5) How good are your English speaking and writing skills?</p>
+              <div className={`question ${language}`}>
+              <p>{t("5) How good are your English speaking and writing skills?", "5) آپ کی انگریزی بولنے اور لکھنے کی مہارت کتنی اچھی ہے؟")}</p>
                 {['Beginner', 'Average', 'Excellent'].map((option) => (
                   <label key={option}>
                     <input
@@ -789,13 +765,13 @@ export default function App() {
                       checked={sQ1 === option}
                       onChange={() => handleSQ1(option)}
                     />{' '}
-                    {option}
+                    {t(option, option === 'Beginner' ? 'ابتدائی' : option === 'Average' ? 'درمیانہ' : 'اعلیٰ')}
                   </label>
                 ))}
               </div>
               {(sQ1 === 'Average' || sQ1 === 'Excellent') && (
-                <div className="question">
-                  <p>6) Do you like convincing customers to buy your product or brand?</p>
+                  <div className={`question ${language}`}>
+                  <p>{t("6) Do you like convincing customers to buy your product or brand?", "6) کیا آپ کو گاہکوں کو اپنی مصنوعات یا برانڈ خریدنے پر آمادہ کرنا پسند ہے؟")}</p>
                   {['Yes', 'No'].map((option) => (
                     <label key={option}>
                       <input
@@ -804,14 +780,14 @@ export default function App() {
                         checked={sQ2 === option}
                         onChange={() => handleSQ2(option)}
                       />{' '}
-                      {option}
+                      {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
                     </label>
                   ))}
                 </div>
               )}
               {(sQ2 === 'Yes' || sQ2 === 'No') && (
-                <div className="question">
-                  <p>7) Do you want to learn about how products are sold to customers by direct client communication?</p>
+                <div className={`question ${language}`}>
+                  <p>{t("7) Do you want to learn about how products are sold to customers by direct client communication?", "7) کیا آپ سیکھنا چاہتے ہیں کہ کس طرح مصنوعات کو براہ راست کلائنٹس سے بات کرکے فروخت کیا جاتا ہے؟")}</p>
                   {['Yes', 'No'].map((option) => (
                     <label key={option}>
                       <input
@@ -820,7 +796,7 @@ export default function App() {
                         checked={sQ3 === option}
                         onChange={() => handleSQ3(option)}
                       />{' '}
-                      {option}
+                      {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
                     </label>
                   ))}
                 </div>
@@ -828,381 +804,402 @@ export default function App() {
             </>
           )}
 
-          {interest === 'creative' && (
-            <>
-              <div className="question">
-                <p>5) Do you enjoy recording videos with your phone or camera?</p>
-                {['Yes', 'No'].map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      value={option}
-                      checked={cQ1 === option}
-                      onChange={() => handleCQ1(option)}
-                    />{' '}
-                    {option}
-                  </label>
-                ))}
-              </div>
-              {cQ1 && (
-                <div className="question">
-                  <p>6) Do you want to know how movies or videos are planned, scripted and filmed?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={cQ2 === option}
-                        onChange={() => handleCQ2(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-              {cQ2 === 'No' && (
-                <div className="question">
-                  <p>7) Have you ever used tools like Figma or Photoshop to create designs?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={cQ3 === option}
-                        onChange={() => handleCQ3(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-              {(cQ3 === 'Yes' || cQ3 === 'No') && (
-                <div className="question">
-                  <p>8) Do you want to learn how to do animation, digital illustration and create logos using these tools?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={cQ4 === option}
-                        onChange={() => handleCQ4(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-            </>
-          )}
+{interest === 'creative' && (
+  <>
+    <div className={`question ${language}`}>
+      <p>{t("5) Do you enjoy recording videos with your phone or camera?", "5) کیا آپ کو اپنے فون یا کیمرے سے ویڈیوز ریکارڈ کرنا پسند ہے؟")}</p>
+      {['Yes', 'No'].map((option) => (
+        <label key={option}>
+          <input
+            type="radio"
+            value={option}
+            checked={cQ1 === option}
+            onChange={() => handleCQ1(option)}
+          />{' '}
+          {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+        </label>
+      ))}
+    </div>
 
-          {interest === 'Programming Languages' && (
-            <>
-              <div className="question">
-                <p>5) Have you ever written code in any programming language?</p>
-                {['Yes', 'No'].map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      value={option}
-                      checked={pQ1 === option}
-                      onChange={() => handlePQ1(option)}
-                    />{' '}
-                    {option}
-                  </label>
-                ))}
-              </div>
-              {pQ1 && (
-                <div className="question">
-                  <p>6) Do you want to learn Python (an easier language)?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={pQ2 === option}
-                        onChange={() => handlePQ2(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-              {pQ2 === 'No' && (
-                <div className="question">
-                  <p>7) Are you interested in making a desktop or Windows application?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={pQ3 === option}
-                        onChange={() => handlePQ3(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-              {pQ3 === 'No' && (
-                <div className="question">
-                  <p>8) Do you want to learn how to use pointers and memory management in C++?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={pQ4 === option}
-                        onChange={() => handlePQ4(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-            </>
-          )}
+    {cQ1 && (
+      <div className={`question ${language}`}>
+        <p>{t("6) Do you want to know how movies or videos are planned, scripted and filmed?", "6) کیا آپ جاننا چاہتے ہیں کہ فلمیں یا ویڈیوز کیسے پلان، اسکرپٹ اور فلمائی جاتی ہیں؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={cQ2 === option}
+              onChange={() => handleCQ2(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
 
-          {interest === 'Technical' && (
-            <>
-              <div className="question">
-                <p>5) Have you ever tried to make a website before, even a basic one?</p>
-                {['Yes', 'No'].map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      value={option}
-                      checked={tQ1 === option}
-                      onChange={() => handleTQ1(option)}
-                    />{' '}
-                    {option}
-                  </label>
-                ))}
-              </div>
-              {tQ1 && (
-                <div className="question">
-                  <p>6) Do you want to learn how to make websites using WordPress?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={tQ2 === option}
-                        onChange={() => handleTQ2(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-              {tQ2 === 'No' && (
-                <div className="question">
-                  <p>7) Do you want to know how a computer works from inside?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={tQ3 === option}
-                        onChange={() => handleTQ3(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-              {tQ3 === 'No' && (
-                <div className="question">
-                  <p>8) Are you curious about how the internet or Wi-Fi network works?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={tQ4 === option}
-                        onChange={() => handleTQ4(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-            </>
-          )}
+    {cQ2 === 'No' && (
+      <div className={`question ${language}`}>
+        <p>{t("7) Have you ever used tools like Figma or Photoshop to create designs?", "7) کیا آپ نے کبھی Figma یا Photoshop جیسے ٹولز کا استعمال کر کے ڈیزائن بنائے ہیں؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={cQ3 === option}
+              onChange={() => handleCQ3(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
 
-          {interest === 'E-commerce' && (
-            <>
-              <div className="question">
-                <p>5) Do you have any experience in creating an online store?</p>
-                {['Yes', 'No'].map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      value={option}
-                      checked={eQ1 === option}
-                      onChange={() => handleEQ1(option)}
-                    />{' '}
-                    {option}
-                  </label>
-                ))}
-              </div>
-              {eQ1 === 'Yes' && (
-                <div className="question">
-                  <p>6) Do you want to create your own online store where you control the website, design, and sales?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={eQ2 === option}
-                        onChange={() => handleEQ2(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-              {eQ2 === 'No' && (
-                <div className="question">
-                  <p>7) Are you interested in selling on big marketplaces like Amazon, Walmart, or eBay?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={eQ3 === option}
-                        onChange={() => handleEQ3(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-              {eQ3 === 'No' && (
-                <div className="question">
-                  <p>8) Are you interested in selling handmade products?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={eQ3a === option}
-                        onChange={() => handleEQ3a(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-              {eQ3 === 'Yes' && (
-                <div className="question">
-                  <p>9) Do you want to sell on a marketplace that is mostly for big brands with strict supplier checks?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={eQ4 === option}
-                        onChange={() => handleEQ4(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-              {eQ4 === 'No' && (
-                <div className="question">
-                  <p>10) Do you want to sell on a big online store where there is fast shipping, help in packing and delivery?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={eQ5 === option}
-                        onChange={() => handleEQ5(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-              {eQ5 === 'No' && (
-                <div className="question">
-                  <p>11) Do you want to sell on a website where people can make offers or buy at fixed price?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={eQ6 === option}
-                        onChange={() => handleEQ6(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-            </>
-          )}
+    {(cQ3 === 'Yes' || cQ3 === 'No') && (
+      <div className={`question ${language}`}>
+        <p>{t("8) Do you want to learn how to do animation, digital illustration and create logos using these tools?", "8) کیا آپ ان ٹولز کا استعمال کر کے اینیمیشن، ڈیجیٹل السٹریشن اور لوگو بنانا سیکھنا چاہتے ہیں؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={cQ4 === option}
+              onChange={() => handleCQ4(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+  </>
+)}
 
-          {interest === 'Data Handling' && (
-            <>
-              <div className="question">
-                <p>5) Have you ever worked with data – using MS Excel or any other software?</p>
-                {['Yes', 'No'].map((option) => (
-                  <label key={option}>
-                    <input
-                      type="radio"
-                      value={option}
-                      checked={dQ1 === option}
-                      onChange={() => handleDQ1(option)}
-                    />{' '}
-                    {option}
-                  </label>
-                ))}
-              </div>
-              {dQ1 && (
-                <div className="question">
-                  <p>6) Would you like to learn how to convert unclean data into charts, reports?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={dQ2 === option}
-                        onChange={() => handleDQ2(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-              {dQ2 === 'No' && (
-                <div className="question">
-                  <p>7) Would you like to learn how to use SQL?</p>
-                  {['Yes', 'No'].map((option) => (
-                    <label key={option}>
-                      <input
-                        type="radio"
-                        value={option}
-                        checked={dQ3 === option}
-                        onChange={() => handleDQ3(option)}
-                      />{' '}
-                      {option}
-                    </label>
-                  ))}
-                </div>
-              )}
-            </>
-            
-          )}
+
+{interest === 'Programming Languages' && (
+  <>
+    <div className={`question ${language}`}>
+      <p>{t("5) Have you ever written code in any programming language?", "5) کیا آپ نے کبھی کسی پروگرامنگ زبان میں کوڈ لکھا ہے؟")}</p>
+      {['Yes', 'No'].map((option) => (
+        <label key={option}>
+          <input
+            type="radio"
+            value={option}
+            checked={pQ1 === option}
+            onChange={() => handlePQ1(option)}
+          />{' '}
+          {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+        </label>
+      ))}
+    </div>
+
+    {pQ1 && (
+      <div className={`question ${language}`}>
+        <p>{t("6) Do you want to learn Python (an easier language)?", "6) کیا آپ Python سیکھنا چاہتے ہیں (ایک آسان زبان)؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={pQ2 === option}
+              onChange={() => handlePQ2(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+
+    {pQ2 === 'No' && (
+      <div className={`question ${language}`}>
+        <p>{t("7) Are you interested in making a desktop or Windows application?", "7) کیا آپ ڈیسک ٹاپ یا ونڈوز ایپلیکیشن بنانے میں دلچسپی رکھتے ہیں؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={pQ3 === option}
+              onChange={() => handlePQ3(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+
+    {pQ3 === 'No' && (
+      <div className={`question ${language}`}>
+        <p>{t("8) Do you want to learn how to use pointers and memory management in C++?", "8) کیا آپ ++C میں پوائنٹرز اور میموری مینجمنٹ سیکھنا چاہتے ہیں؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={pQ4 === option}
+              onChange={() => handlePQ4(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+  </>
+)}
+
+
+{interest === 'Technical' && (
+  <>
+    <div className={`question ${language}`}>
+      <p>{t("5) Have you ever tried to make a website before, even a basic one?", "5) کیا آپ نے پہلے کبھی ویب سائٹ بنانے کی کوشش کی ہے، چاہے وہ سادہ ہی کیوں نہ ہو؟")}</p>
+      {['Yes', 'No'].map((option) => (
+        <label key={option}>
+          <input
+            type="radio"
+            value={option}
+            checked={tQ1 === option}
+            onChange={() => handleTQ1(option)}
+          />{' '}
+          {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+        </label>
+      ))}
+    </div>
+
+    {tQ1 && (
+      <div className={`question ${language}`}>
+        <p>{t("6) Do you want to learn how to make websites using WordPress?", "6) کیا آپ WordPress کا استعمال کرتے ہوئے ویب سائٹ بنانا سیکھنا چاہتے ہیں؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={tQ2 === option}
+              onChange={() => handleTQ2(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+
+    {tQ2 === 'No' && (
+      <div className={`question ${language}`}>
+        <p>{t("7) Do you want to know how a computer works from inside?", "7) کیا آپ جاننا چاہتے ہیں کہ کمپیوٹر اندر سے کیسے کام کرتا ہے؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={tQ3 === option}
+              onChange={() => handleTQ3(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+
+    {tQ3 === 'No' && (
+      <div className={`question ${language}`}>
+        <p>{t("8) Are you curious about how the internet or Wi-Fi network works?", "8) کیا آپ یہ جاننے میں دلچسپی رکھتے ہیں کہ انٹرنیٹ یا وائی فائی نیٹ ورک کیسے کام کرتا ہے؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={tQ4 === option}
+              onChange={() => handleTQ4(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+  </>
+)}
+
+
+{interest === 'E-commerce' && (
+  <>
+    <div className={`question ${language}`}>
+      <p>{t("5) Do you have any experience in creating an online store?", "5) کیا آپ کے پاس آن لائن اسٹور بنانے کا کوئی تجربہ ہے؟")}</p>
+      {['Yes', 'No'].map((option) => (
+        <label key={option}>
+          <input
+            type="radio"
+            value={option}
+            checked={eQ1 === option}
+            onChange={() => handleEQ1(option)}
+          />{' '}
+          {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+        </label>
+      ))}
+    </div>
+
+    {eQ1 === 'Yes' && (
+      <div className={`question ${language}`}>
+        <p>{t("6) Do you want to create your own online store where you control the website, design, and sales?", "6) کیا آپ اپنا آن لائن اسٹور بنانا چاہتے ہیں جہاں آپ ویب سائٹ، ڈیزائن اور سیلز پر مکمل کنٹرول رکھ سکیں؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={eQ2 === option}
+              onChange={() => handleEQ2(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+
+    {eQ2 === 'No' && (
+      <div className={`question ${language}`}>
+        <p>{t("7) Are you interested in selling on big marketplaces like Amazon, Walmart, or eBay?", "7) کیا آپ Amazon، Walmart یا eBay جیسے بڑے پلیٹ فارمز پر سیلنگ میں دلچسپی رکھتے ہیں؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={eQ3 === option}
+              onChange={() => handleEQ3(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+
+    {eQ3 === 'No' && (
+      <div className={`question ${language}`}>
+        <p>{t("8) Are you interested in selling handmade products?", "8) کیا آپ ہاتھ سے بنائی گئی اشیاء بیچنے میں دلچسپی رکھتے ہیں؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={eQ3a === option}
+              onChange={() => handleEQ3a(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+
+    {eQ3 === 'Yes' && (
+      <div className={`question ${language}`}>
+        <p>{t("9) Do you want to sell on a marketplace that is mostly for big brands with strict supplier checks?", "9) کیا آپ کسی ایسے پلیٹ فارم پر سیل کرنا چاہتے ہیں جو زیادہ تر بڑے برانڈز کے لیے ہوتا ہے اور جہاں سخت سپلائر چیک ہوتے ہیں؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={eQ4 === option}
+              onChange={() => handleEQ4(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+
+    {eQ4 === 'No' && (
+      <div className={`question ${language}`}>
+        <p>{t("10) Do you want to sell on a big online store where there is fast shipping, help in packing and delivery?", "10) کیا آپ کسی بڑے آن لائن اسٹور پر سیل کرنا چاہتے ہیں جہاں تیز ڈیلیوری اور پیکنگ میں مدد دستیاب ہو؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={eQ5 === option}
+              onChange={() => handleEQ5(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+
+    {eQ5 === 'No' && (
+      <div className={`question ${language}`}>
+        <p>{t("11) Do you want to sell on a website where people can make offers or buy at fixed price?", "11) کیا آپ ایسی ویب سائٹ پر سیل کرنا چاہتے ہیں جہاں لوگ آفرز دے سکیں یا مقرر کی گئی قیمت پر خرید سکیں؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={eQ6 === option}
+              onChange={() => handleEQ6(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+  </>
+)}
+
+
+{interest === 'Data Handling' && (
+  <>
+    <div className={`question ${language}`}>
+      <p>{t("5) Have you ever worked with data – using MS Excel or any other software?", "5) کیا آپ نے کبھی ڈیٹا پر کام کیا ہے – جیسے MS Excel یا کوئی اور سافٹ ویئر؟")}</p>
+      {['Yes', 'No'].map((option) => (
+        <label key={option}>
+          <input
+            type="radio"
+            value={option}
+            checked={dQ1 === option}
+            onChange={() => handleDQ1(option)}
+          />{' '}
+          {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+        </label>
+      ))}
+    </div>
+
+    {dQ1 && (
+      <div className={`question ${language}`}>
+        <p>{t("6) Would you like to learn how to convert unclean data into charts, reports?", "6) کیا آپ سیکھنا چاہتے ہیں کہ غیر منظم ڈیٹا کو چارٹس اور رپورٹس میں کیسے بدلا جاتا ہے؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={dQ2 === option}
+              onChange={() => handleDQ2(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+
+    {dQ2 === 'No' && (
+      <div className={`question ${language}`}>
+        <p>{t("7) Would you like to learn how to use SQL?", "7) کیا آپ SQL استعمال کرنا سیکھنا چاہتے ہیں؟")}</p>
+        {['Yes', 'No'].map((option) => (
+          <label key={option}>
+            <input
+              type="radio"
+              value={option}
+              checked={dQ3 === option}
+              onChange={() => handleDQ3(option)}
+            />{' '}
+            {t(option, option === 'Yes' ? 'ہاں' : 'نہیں')}
+          </label>
+        ))}
+      </div>
+    )}
+  </>
+)}
+
 
           {recommendation && <div className="recommendation">{recommendation}</div>}
           {categoryWarning && <div className="warning">{categoryWarning}</div>}
           </div>
          
-          <button onClick={handleSubmit} className="submit-btn">
+          {/* <button onClick={handleSubmit} className="submit-btn">
             Next
-          </button>
+          </button> */}
 
           <footer className="footer">
       <div className="footer-container">
